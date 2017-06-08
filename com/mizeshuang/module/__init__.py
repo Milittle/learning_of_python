@@ -6,5 +6,5 @@
 # 那么一般引入包的方式有
 # 1.import some_moudle
 # 上面的就是引入这一整个模块
-# 2.from moudle import function
+# 2.from module import function
 # 上面是从一个某一个模块中引入特定的一个函数
