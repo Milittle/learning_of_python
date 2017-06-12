@@ -10,7 +10,7 @@ class Cat(Animal):
 		print('Cat is running')
 dog = Dog()
 cat = Cat()
-dog.run()		
+dog.run()
 cat.run()
 # Dog is running
 # Cat is running
@@ -45,3 +45,4 @@ run_twice(cat) ## 打印两遍的run函数信息
 # 考虑上面的例子，run_twice这个函数，其实可以传入任意有run方法的类对象，因为没有所谓的类型限制
 # 这是因为在python中在传递参数的时候是没有限制参数类型的，所以这就是动态语言和静态语言的一个区别
 # 这种现象说明在动态语言中，就是看起来像就可以做，这也称为鸭子类型
+# 所以说一般对象实例不能和类属性名字一样
