@@ -114,3 +114,7 @@ class User(Model):
 	password = StringField('password')
 user = User(id = 12345, name = 'milittle', email = '4356@org.com', password = '123456')
 user.save()
+# 在ModelMetaclass中做的事情就是将Model过滤过去然后对对于定义的子类进行操作
+# 找到一个Field属性就放在__mapping__属性里面然后将类属性删除
+# 将表名存储在__table__这个属性里面，它的默认值就是类名，在这里面也就是User
+# save()方法就是将该对象保存在数据库里面，可以构造出一个insert语句
