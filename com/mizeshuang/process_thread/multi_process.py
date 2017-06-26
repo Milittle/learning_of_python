@@ -1,6 +1,6 @@
 # 多进程模式编程
 # 理解了linux里面的fork函数就可以对多进程有一个很好的理解
-# 在python中是有os模块来干这件事情的
+# 在python中有os模块来做这件事情的
 import os
 print('Process (%s) start...' % os.getpid())
 
@@ -41,9 +41,9 @@ if __name__ == '__main__':
 # target = function, args = (参数,) # 这个args是一个tuple
 # 创建一个 Process 实例，用 start()方法启动，这样创建进程
 # 比 fork()还要简单。
-# 据我做的实验，这个windows上面子进程是无法获取到父进程的pid的
+# windows上面子进程是无法获取到父进程的pid的
 
-# 下面是创建很多个子进程的时候使用Pool来做支持
+# 下面是创建很多个子进程的时候使用进程池Pool来做支持
 
 from multiprocessing import Pool
 import os, time, random
@@ -53,14 +53,18 @@ def multi_process(n):
 	start = time.time()
 	time.sleep(random.random() * 3)
 	end = time.time()
-	print('task %s run %0.2f seconds.' % (name, (end - start)))
+	print('Task %s run %0.2f seconds.' % (n, (end - start)))
 if __name__ == '__main__':
 	print('parent process is (%s)' % (os.getpid))
 	p = Pool(4)
 	for i in range(5):
 		p.apply_async(multi_process, args = (i,))
-	print('wait all sun_process execute end')
+	print('Wait all sun_process execute done')
 	p.close()
 	p.join()
-	print('ALL sun_process aleardy have executed end')
+	print('ALL sun_process aleardy have done')
+if __name__ =='__main__':
+	print('hello world!!!')
 
+
+# 最后得出的结论是每一个子进程都会执行下面的程序
